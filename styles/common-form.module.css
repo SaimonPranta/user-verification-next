@@ -1,0 +1,259 @@
+.authentication{
+    padding-top: 40px;
+}
+.authentication form{
+    border: 1px solid #ABABAB;
+    padding: 50px;
+    border-radius: 10px;
+    /* width: 570px; */
+    width: 800px;
+    margin: auto;
+    /* background-color: rgba(255, 255, 255, 0.158); */
+    background-color: #dba72204;
+    /* box-shadow: rgba(255, 255, 255, 0.573) 7px 7px;  */
+    box-shadow: rgba(255, 255, 255, 0.743) 7px 7px; 
+
+}
+.authentication form h6, .authentication form p {
+    padding: 0 10px;
+}
+.authentication form h6{
+    font-size: 1.4rem ;
+    color: #fff;
+    font-weight: 700;
+}
+.authentication form input{
+    display: block;
+    margin: 10px;
+    width: 100%;
+    padding: 3px 8px;
+    border:none;
+    color: #000;
+    border: 1.7px solid #C5C5C5;
+    border-radius: 4px;
+    outline: yellow;
+    height: 42px;
+}
+.authentication form label{
+    display: block;
+    margin: 10px;
+    width: 100%;
+    padding: 3px 4px 1px 4px;
+    border:none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+.authentication form input[type=checkbox]{
+    height: 12px ;
+    width: 12px;
+    display: inline;
+}
+.authentication form input::placeholder{
+    color: #000;
+}
+.authentication form input:focus{
+    border:none;
+    border:  2px solid #F9A51A;
+    color: #000;
+}
+.authentication form input[type="submit"]{
+    /* margin: auto; */
+    width: 220px;
+    background-color: #F9A51A;
+    color:#000;
+    padding: 5px 0;
+    font-weight: 500;
+    border: none;
+    margin-top: 30px !important;
+}
+.socil-container{
+    padding: 0 50px;
+    border-radius: 10px;
+    width: 570px;
+    margin: auto;
+    cursor: pointer;
+}
+.socil-container div{
+    border: 1px solid #ABABAB;
+    border-radius: 70px;
+    margin: 10px auto;
+    display: flex;
+}
+.socil-container div p{
+    text-align: center;
+    margin: auto;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.forgot-password{
+    float: right;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.slocil-after{
+    position: relative;
+    text-align: center;
+    font-weight: 500;
+    margin: 20px auto;
+}
+.slocil-after::before{
+    position: absolute;
+    content: " ";
+    top: 50%;
+    transform: translateY(-50%);
+    left: 30px;
+    background-color: #ABABAB;
+    height: 1px;
+    width: 40%;
+}
+.slocil-after::after{
+    position: absolute;
+    content: " ";
+    top: 50%;
+    transform: translateY(50%);
+    right:30px;
+    background-color:#ABABAB;
+    height: 1px;
+    width: 40%;
+}
+.warning{
+    color: rgb(255, 217, 0);
+    text-align:left;
+}
+.sucess{
+    color: white;
+}
+.form-navigation span{
+    text-decoration: none;
+    color: #FFD700;
+}
+.form-navigation {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-top: 10px;
+
+}
+.resposeContainer{
+    display: block;
+}
+
+/* ========================================== */
+@media only screen and (min-width:200px) and (max-width:1150px) {
+    .authentication form{
+        margin: auto;
+        width: 80% !important;
+        padding: 50px;
+    }
+}
+@media only screen and (min-width:200px) and (max-width:996px) {
+    .authentication form{
+        margin: auto;
+        width: 95% !important;
+        padding: 50px;
+    }
+}
+@media only screen and (min-width:200px) and (max-width:768px) {
+    .authentication form label{
+        padding-top: 14px !important;
+    }
+    .authentication form h6, .authentication form p {
+        padding: 0 2px;
+    }
+    .authentication form{
+        margin: auto;
+        width: 95% !important;
+    }
+    .socil-container{
+        border-radius: 10px;
+        width: 390px;
+    }
+    .socil-container div p{
+        font-size: .9rem;
+        font-weight: 600;
+    }
+    .socil-container div img{
+        height: 30px;
+    }
+    .slocil-after::before{
+        left: 0px;
+    }
+    .slocil-after::after{
+        right:0px;
+    }
+   .balance-transfer-section form input {
+        width: 95% !important;
+        margin: auto !important;
+      }
+      .balance-transfer-section form label {
+        width: 95% !important;
+        margin: auto !important;
+        padding-left: 3px;
+       
+      }
+    
+}
+@media only screen and (min-width:200px) and (max-width:576px) {
+    .authentication form{
+        margin: auto;
+        padding: 20px !important;
+    }
+    .balance-transfer-section form input {
+        width: 80% !important;
+        margin: auto !important;
+      }
+      .balance-transfer-section form label {
+        width: 95% !important;
+        margin: auto !important;
+        padding-left: 3px;
+       
+      }
+    .authentication form h6{
+        font-weight: 580;
+    }
+    .socil-container{
+        margin: auto;
+    }
+    .socil-container div{
+        width: 300px;
+    }
+    .authentication form input{
+        font-size: 14px;
+        margin: auto !important;
+    }
+    .authentication form label{
+        font-size: 14px;
+        margin: auto !important;
+    }
+    
+    .form-navigation{
+        font-size: 12px;
+        height: 30px !important;
+        width: 100% !important;
+    }
+    .remember-me{
+        font-size: 14px;
+    }
+    .forgot-password{
+        font-size: 14px;
+    }
+    .forgot-p{
+        font-size: 14px;
+    }
+    .socil-container{
+        width: 300px;
+        margin: auto;
+    }
+    .socil-container div{
+        width: 200px;
+    }
+    .socil-container div p{
+        font-size: .8rem;
+        font-weight: 600;
+    }
+    .socil-container div img{
+        height: 25px;
+    }
+    
+    
+}
