@@ -6,17 +6,17 @@ import cookieExpires from '../../Assets/Functions/cookieExpires';
 import { userContext } from '../_app';
 
 
-const index = () => {
+const Index = () => {
     const [inputUser, setInputUser] = useState({});
     const [user, setUser] = useContext(userContext);
     const router = useRouter()
 
     const registationFormHanle = (e) => {
         e.preventDefault()
-        if (inputUser.firstName && inputUser.lastName && inputUser.phoneNumber && inputUser.email && inputUser.role && inputUser.userName && inputUser.password) {
+        if (inputUser.firstName && inputUser.lastName && inputUser.phoneNumber && inputUser.email && inputUser.role && inputUser.password) {
 
             if (inputUser.password === inputUser.confirmPassword) {
-                fetch(`http://localhost:8000/auth/signup`, {
+                fetch(`https://userappserver.nexttcoin.com/auth/register`, {
                     method: "POST",
                     body: JSON.stringify(inputUser),
                     headers: {
@@ -25,7 +25,6 @@ const index = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
                         document.cookie = `token = ${data.token}; ${cookieExpires(3)}; path=/`;
                         if (data.failed) {
                             // setMessage({ failed: data.failed })
@@ -71,8 +70,6 @@ const index = () => {
                         <input type="text" placeholder="Phone Number" name="phoneNumber" value={inputUser.phoneNumber ? inputUser.phoneNumber : ""} required autoComplete="off" onChange={fromInputHandler} />
                         <label>Role</label>
                         <input type="text" placeholder="Role" name="role" value={inputUser.role ? inputUser.role : ""} required autoComplete="off" onChange={fromInputHandler} />
-                        <label>User Name</label>
-                        <input type="text" placeholder="@username" name="userName" value={inputUser.userName ? inputUser.userName : ""} required autoComplete="off" onChange={fromInputHandler} />
                         <label>Password</label>
                         <input type="password" placeholder="Password" name="password" value={inputUser.password ? inputUser.password : ""} required autoComplete="off" onChange={fromInputHandler} />
                         <label>Confirm Password</label>
@@ -90,4 +87,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Index;

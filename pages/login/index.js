@@ -6,18 +6,17 @@ import { userContext } from '../_app';
 import cookieExpires from '../../Assets/Functions/cookieExpires';
 
 
-const index = () => {
+const Index = () => {
     const [inputUser, setInputUser] = useState({})
     const [user, setUser] = useContext(userContext)
     const router = useRouter()
 
-    console.log(user)
 
     const handleLogIn = (e) => {
         e.preventDefault()
-        if (inputUser.email && inputUser.password) {
+        if (inputUser.email_or_phone && inputUser.password) {
 
-            fetch(`http://localhost:8000/auth/login`, {
+            fetch(`https://userappserver.nexttcoin.com/auth/login`, {
                 method: "POST",
                 body: JSON.stringify(inputUser),
                 headers: {
@@ -26,10 +25,7 @@ const index = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
-                    
                     if (data.failed) {
-                        // setMessage({ failed: data.failed })
                     }
                     if (data.data) {
                         document.cookie = `token = ${data.token}; ${cookieExpires(3)}; path=/`;
@@ -60,8 +56,8 @@ const index = () => {
                 <section className={styles.authentication} autoComplete="off">
                     <form onSubmit={handleLogIn} autoComplete="off" autoCorrect='off' id='registation_form'>
                         <h6>LogIn your account</h6>
-                        <label>E-mail</label>
-                        <input type="email" placeholder="Enter Your Email" name="email" value={inputUser.email ? inputUser.email : ""} required autoComplete="off" onChange={fromInputHandler} />
+                        <label>E-mail or Phone Number</label>
+                        <input type="text" placeholder="Enter Your Email or Phone Number" name="email_or_phone" value={inputUser.email_or_phone ? inputUser.email_or_phone : ""} required autoComplete="off" onChange={fromInputHandler} />
                         <label>Password</label>
                         <input type="password" placeholder="Enter Your Password" name="password" value={inputUser.password ? inputUser.password : ""} required autoComplete="off" onChange={fromInputHandler} />
 
@@ -77,4 +73,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Index;

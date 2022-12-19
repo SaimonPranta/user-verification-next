@@ -1,13 +1,13 @@
+import Link from 'next/link';
 import React, { useContext } from 'react';
 import Header from '../../Components/Header/Header';
 import styles from "../../styles/user.module.css";
 import { userContext } from '../_app';
 
-const index = () => {
+const Index = () => {
     const [user, setUser] = useContext(userContext);
-    console.log(user)
     const handleDeleteUser = () => {
-        fetch(`http://localhost:8000/user/${user?._id}`, {
+        fetch(`https://userappserver.nexttcoin.com/user/${user?._id}`, {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json; charset=UTF-8'
@@ -15,7 +15,6 @@ const index = () => {
         })
         .then( res => res.json())
         .then( data => {
-            console.log(data)
         })
     }
 
@@ -30,7 +29,7 @@ const index = () => {
                     <h4>User Name: @{user.userName}</h4>
                     <h4>E-mail: {user.email}</h4>
                     <h4>Phone Number: {user.phoneNumber}</h4>
-                    <button className={styles.buttonOne} >Edit User</button>
+                    <Link href={`/user/${user?._id}`}><button className={styles.buttonOne} >Edit User</button></Link>
                     <button className={styles.buttonTwo} onClick={handleDeleteUser}>Delete User</button>
                 </div> : <div className={styles.info}>
                     <h3>No User LogIn !</h3>
@@ -40,4 +39,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Index;
