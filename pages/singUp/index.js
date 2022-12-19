@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useRouter } from 'next/router'
 import Header from '../../Components/Header/Header';
 import styles from '../../styles/common-form.module.css';
+import cookieExpires from '../../Assets/Functions/cookieExpires';
+import { userContext } from '../_app';
+
 
 const index = () => {
     const [inputUser, setInputUser] = useState({});
+    const [user, setUser] = useContext(userContext);
+    const router = useRouter()
 
-    
     const registationFormHanle = (e) => {
         e.preventDefault()
         if (inputUser.firstName && inputUser.lastName && inputUser.phoneNumber && inputUser.email && inputUser.role && inputUser.userName && inputUser.password) {
@@ -21,26 +26,23 @@ const index = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        // document.cookie = `token = ${data.token}; ${cookieExpires(3)}; path=/`;
-                        // if (data.sucess) {
-                        //     setMessage({ sucess: data.sucess })
-                        // }
-                        // if (data.failed) {
-                        //     setMessage({ failed: data.failed })
-                        // }
-                        // if (data.data) {
-                        //     data.data.password = null;
-                        //     setUser(data.data)
-                        //     navigate(from, { replace: true })
-                        // }
-                        
+                        document.cookie = `token = ${data.token}; ${cookieExpires(3)}; path=/`;
+                        if (data.failed) {
+                            // setMessage({ failed: data.failed })
+                        }
+                        if (data.data) {
+                            data.data.password = null;
+                            setUser(data.data)
+                            router.push("/user")
+                        }
+
                     })
             } else {
-                
+
             }
 
         } else {
-           
+
         }
     }
     const fromInputHandler = (e) => {
@@ -56,7 +58,7 @@ const index = () => {
         <main>
             <Header />
             <div>
-                <section className={styles.authentication} autoComplete="off">
+                <section className={styles.authentication}>
                     <form onSubmit={registationFormHanle} autoComplete="off" autoCorrect='off' id='registation_form'>
                         <h6>Register an account</h6>
                         <label>First Name</label>
@@ -84,7 +86,6 @@ const index = () => {
 
                 </section>
             </div>
-
         </main>
     );
 };

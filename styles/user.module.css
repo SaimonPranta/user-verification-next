@@ -1,0 +1,27 @@
+.info{
+    display: block;
+    margin: auto;
+    height: 100%;
+    max-width: 600px;
+    width: 85%;
+    margin-top:80px;
+}
+.info h3, .info h4{
+    padding: 5px;
+}
+.info button{
+    padding: 8px 15px;
+    margin-top: 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    color: #ffffff;
+   cursor: pointer;
+}
+.info .buttonOne{
+    background-color: green;
+}
+.info .buttonTwo{
+    background-color: yellowgreen;
+}

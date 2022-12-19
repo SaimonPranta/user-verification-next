@@ -1,7 +1,11 @@
-import React from 'react';
+import Link from 'next/link';
+import React, { useContext } from 'react';
+import { userContext } from '../../pages/_app';
 import styles from '../../styles/Header.module.css';
 
 const Header = () => {
+    const [user] = useContext(userContext)
+
     return (
         <div className={styles.header}>
             <div className={styles.logo}>
@@ -10,17 +14,21 @@ const Header = () => {
             <div className={styles.nav}>
                 <ul>
                     <li>
-                        <a>Home</a>
+                        <Link href="/">Home</Link>
                     </li>
-                    <li>
-                        <a>LogIn</a>
-                    </li>
-                    <li>
-                        <a>SignUp</a>
-                    </li>
-                    <li>
-                        <a>User</a>
-                    </li>
+
+                    {
+                        user?.firstName ? <li>
+                            <Link href="/user">{user.firstName}</Link>
+                        </li> : <>
+                            <li>
+                                <Link href="/login">LogIn</Link>
+                            </li>
+                            <li>
+                                <Link href="/singUp">SignUp</Link>
+                            </li>
+                        </>
+                    }
                 </ul>
             </div>
         </div>
